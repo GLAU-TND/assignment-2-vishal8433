@@ -1,22 +1,25 @@
-package problem4.main;
+package problem4.myqueue;
+import problem4.linkedList.MyLinkedList;
+import problem4.linkedList.Node;
 
-import problem1.mybst.MyBinarySearchTree;
-import problem4.myqueue.MyQueue;
+public class MyQueue {
+    MyLinkedList linkedList = new MyLinkedList();
+    public int peek(int data){
+        if(linkedList.search(data)==null){
+            return -1;
+        }
+        return linkedList.search(data).getData();
+    }
 
-// executable class
-// use problem1.mybst.MyBinarySearchTree class for creating binary tree
-public class MyMain {
-    public static void main(String[] args) {
-        MyQueue myQueue = new MyQueue();
-        MyBinarySearchTree myBinarySearchTree = new MyBinarySearchTree (myQueue);
-        myBinarySearchTree.insert(05);
-        myBinarySearchTree.insert(10);
-        myBinarySearchTree.insert(25);
-        myBinarySearchTree.insert(33);
-        myBinarySearchTree.insert(39);
-        myBinarySearchTree.insert(50);
-        myBinarySearchTree.preOrder(myBinarySearchTree.getRoot());
-        System.out.println("PreOrder successors of all the nodes");
-        myQueue.show();
+    public void enqueue(int data){
+        linkedList.addLast(data);
+    }
+
+    public void dequeue(){
+        linkedList.deleteFirst();
+    }
+
+    public void show(){
+        linkedList.display();
     }
 }
